@@ -16,7 +16,8 @@ class FilteringViewController: UIViewController {
     let imageFilterer = ImageFilterer()
     
     @IBAction func performFilter(_ sender: Any) {
-        
+        let filteredImage = imageFilterer.filterImage(UIImage(named: "Lion"))
+        outputImageView.image = filteredImage
     }
 }
 
