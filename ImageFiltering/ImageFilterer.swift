@@ -11,9 +11,12 @@ import UIKit
 class ImageFilterer {
     
     let context = CIContext(options: nil)
-    
     func filterImage(_ image: UIImage?) -> UIImage? {
-        // Remove this `return nil` when you work on this function. This is just here to have the compiler not throw an error.
-        return nil
+        let ciImage = CIImage(image: image!)
+        let filter = CIFilter(name: "CIPhotoEffectInstant")
+        filter?.setValue(ciImage, forKey: "inputImage")
+        let ciOutput = filter?.outputImage
+        let cgImage = context.createCGImage(ciOutput!, from: (ciOutput?.extent)!)
+        return UIImage(cgImage: cgImage!)
     }
 }
